@@ -14,6 +14,6 @@ ml miniforge
 conda activate nnUNet
 
 ### This shell script is edited by Russ as template script for other job ###
-source script/twnia2/env.sh
+source script/nchc/env.sh
 python nnunetv2/dataset_conversion/Dataset306_aicup2025.py
 
