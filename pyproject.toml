@@ -4,7 +4,8 @@ version = "2.6.2"
 requires-python = ">=3.10"
 description = "nnU-Net is a framework for out-of-the box image segmentation."
 readme = "readme.md"
-license = { file = "LICENSE" }
+#license = { file = "LICENSE" }
+license = "Apache-2.0"
 authors = [
     { name = "Fabian Isensee", email = "f.isensee@dkfz-heidelberg.de"},
     { name = "Helmholtz Imaging Applied Computer Vision Lab" }
@@ -15,7 +16,7 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Healthcare Industry",
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: Apache Software License",
+    #"License :: OSI Approved :: Apache Software License",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Scientific/Engineering :: Image Recognition",
     "Topic :: Scientific/Engineering :: Medical Science Apps.",
