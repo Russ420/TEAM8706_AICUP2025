@@ -1,0 +1,54 @@
+/usr/share/lmod/lmod/init/bash: line 121: conda: command not found
++----------------------------------------------------+
+| loading miniforge with conda 24.7.1 and python 3.9 |
++----------------------------------------------------+
+
+/work/u4526725/Dataset/nnUNet/nnUNet_raw
+/work/u4526725/Dataset/nnUNet/nnUNet_preprocessed
+/work/u4526725/Dataset/nnUNet/nnUNet_results
+/home/u4526725/.conda/envs/nnUNet/bin:/work/HPC_SYS/twnia2/pkg-rocky8/tools/miniforge/Miniforge-pypy3-24.7.1-2/condabin:/home/u4526725/.conda/envs/nnUNet/bin:/opt/conda/bin:/home/u4526725/.vscode-server/cli/servers/Stable-7d842fb85a0275a4a8e4d7e040d2625abbf7f084/server/bin/remote-cli:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/u4526725/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/u4526725/.local/bin:/home/u4526725/.local/bin
+
+############################
+INFO: You are using the old nnU-Net default plans. We have updated our recommendations. Please consider using those instead! Read more here: https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/resenc_presets.md
+############################
+
+Using device: cuda:0
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+2025-11-07 18:24:39.728752: Using torch.compile...
+2025-11-07 18:24:52.327751: do_dummy_2d_data_aug: False
+2025-11-07 18:24:52.328369: Creating new 5-fold cross-validation split...
+2025-11-07 18:24:52.333258: Desired fold for training: 0
+2025-11-07 18:24:52.333351: This split has 40 training and 10 validation cases.
+Traceback (most recent call last):
+  File "/home/u4526725/.local/bin/nnUNetv2_train", line 7, in <module>
+    sys.exit(run_training_entry())
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/run/run_training.py", line 266, in run_training_entry
+    run_training(args.dataset_name_or_id, args.configuration, args.fold, args.tr, args.p, args.pretrained_weights,
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/run/run_training.py", line 207, in run_training
+    nnunet_trainer.run_training()
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 1363, in run_training
+    self.on_train_start()
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 900, in on_train_start
+    self.dataloader_train, self.dataloader_val = self.get_dataloaders()
+                                                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/training/nnUNetTrainer/nnUNetTrainer.py", line 660, in get_dataloaders
+    dl_tr = nnUNetDataLoader(dataset_tr, self.batch_size,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/training/dataloading/data_loader.py", line 61, in __init__
+    self.data_shape, self.seg_shape = self.determine_shapes()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/training/dataloading/data_loader.py", line 81, in determine_shapes
+    data, seg, seg_prev, properties = self._data.load_case(self._data.identifiers[0])
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/u4526725/ntuh/nnUNet/nnunetv2/training/dataloading/nnunet_dataset.py", line 146, in load_case
+    seg_prev = blosc2.open(urlpath=prev_seg_b2nd_file, mode='r', dparams=dparams, **mmap_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/u4526725/.local/lib/python3.12/site-packages/blosc2/schunk.py", line 1581, in open
+    raise FileNotFoundError(f"No such file or directory: {urlpath}")
+FileNotFoundError: No such file or directory: /work/u4526725/Dataset/nnUNet/nnUNet_results/Dataset306_aicup2025/nnUNetTrainer__nnUNetPlans__3d_lowres/predicted_next_stage/3d_cascade_fullres/patient0001.b2nd
