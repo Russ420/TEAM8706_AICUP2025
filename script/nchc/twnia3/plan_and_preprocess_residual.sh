@@ -20,7 +20,7 @@ conda activate nnUNet
 # 以下部分是要執行的程式
 source script/nchc/env.sh
 # 2d/3d_fullres only need to apply nnUNetv2_plan_experiment
-#srun nnUNetv2_plan_experiment -d 306 -np 56 -pl nnUNetPlannerResEncL
+srun nnUNetv2_plan_experiment -d 306 -np 28 -pl nnUNetPlannerResEncL
 
 # only 3d_lowres need to preprocess the dataset again
-srun nnUNetv2_plan_and_preprocess -d 306 -np 28 -pl nnUNetPlannerResEncL -c 3d_lowres
+#srun nnUNetv2_plan_and_preprocess -d 306 -np 28 -pl nnUNetPlannerResEncL -c 3d_lowres
