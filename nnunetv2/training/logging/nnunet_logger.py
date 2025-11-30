@@ -62,6 +62,17 @@ class nnUNetLogger(object):
         x_values = list(range(epoch + 1))
         ax.plot(x_values, self.my_fantastic_logging['train_losses'][:epoch + 1], color='b', ls='-', label="loss_tr", linewidth=4)
         ax.plot(x_values, self.my_fantastic_logging['val_losses'][:epoch + 1], color='r', ls='-', label="loss_val", linewidth=4)
+
+        if 'train_fc' in self.my_fantastic_logging.keys():
+            ax.plot(x_values, self.my_fantastic_logging['train_fc'][:epoch + 1], color='dodgerblue', ls='dotted', label="train_focal", linewidth=4)
+        if 'train_dc' in self.my_fantastic_logging.keys():
+            ax.plot(x_values, self.my_fantastic_logging['train_dc'][:epoch + 1], color='dodgerblue', ls='-', label="train_dice", linewidth=4)
+        if 'val_fc' in self.my_fantastic_logging.keys():
+            ax.plot(x_values, self.my_fantastic_logging['val_fc'][:epoch + 1], color='coral', ls='dotted', label="val_focal", linewidth=4)
+        if 'val_dc' in self.my_fantastic_logging.keys():
+            ax.plot(x_values, self.my_fantastic_logging['val_dc'][:epoch + 1], color='coral', ls='-', label="val_dice", linewidth=4)
+            
+
         ax2.plot(x_values, self.my_fantastic_logging['mean_fg_dice'][:epoch + 1], color='g', ls='dotted', label="pseudo dice",
                  linewidth=3)
         ax2.plot(x_values, self.my_fantastic_logging['ema_fg_dice'][:epoch + 1], color='g', ls='-', label="pseudo dice (mov. avg.)",
@@ -83,6 +94,12 @@ class nnUNetLogger(object):
         ax.set_xlabel("epoch")
         ax.set_ylabel("time [s]")
         ax.legend(loc=(0, 1))
+
+        if 'n_target' in self.my_fantastic_logging.keys():
+            ax2 = ax.twinx()
+            _ = ax2.bar(x_values, self.my_fantastic_logging['n_target'][:epoch + 1], color='purple', label="class_3", alpha=.4)
+            ax2.set_ylabel("ratio_sample")
+            ax2.legend(loc=(0.2, 1))
 
         # learning rate
         ax = ax_all[2]
