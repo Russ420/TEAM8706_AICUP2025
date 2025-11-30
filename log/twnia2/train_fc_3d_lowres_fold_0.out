@@ -1,0 +1,12 @@
++----------------------------------------------------+
+| loading miniforge with conda 24.7.1 and python 3.9 |
++----------------------------------------------------+
+
+Thu Nov 20 18:06:03 CST 2025
+/work/u4526725/ntuh/nnUNet
+/work/u4526725/Dataset/nnUNet/nnUNet_raw
+/work/u4526725/Dataset/nnUNet/nnUNet_preprocessed
+/work/u4526725/Dataset/nnUNet/nnUNet_results
+/work/u4526725/Dataset/nnUNet/nnUNet_predictions
+/home/u4526725/.conda/envs/nnUNet/bin:/work/HPC_SYS/twnia2/pkg-rocky8/tools/miniforge/Miniforge-pypy3-24.7.1-2/condabin:/opt/conda/bin:/opt/conda/bin:/home/u4526725/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/u4526725/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/u4526725/.vscode-server/cli/servers/Stable-cb1933bbc38d329b3595673a600fab5c7368f0a7/server/bin/remote-cli:/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/u4526725/.vscode-server/extensions/ms-python.debugpy-2025.16.0-linux-x64/bundled/scripts/noConfigScripts:/home/u4526725/.local/bin:/home/u4526725/bin:/home/u4526725/.local/bin:/home/u4526725/.local/bin
+slurmstepd: error: *** JOB 832047 ON gn1224 CANCELLED AT 2025-11-20T18:06:12 ***

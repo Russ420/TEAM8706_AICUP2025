@@ -1,0 +1,11 @@
++----------------------------------------------------+
+| loading miniforge with conda 24.7.1 and python 3.9 |
++----------------------------------------------------+
+
+Thu Nov 13 23:07:36 CST 2025
+/work/u4526725/ntuh/nnUNet
+/work/u4526725/Dataset/nnUNet/nnUNet_raw
+/work/u4526725/Dataset/nnUNet/nnUNet_preprocessed
+/work/u4526725/Dataset/nnUNet/nnUNet_results
+/work/u4526725/Dataset/nnUNet/nnUNet_predictions
+/home/u4526725/.conda/envs/nnUNet/bin:/work/HPC_SYS/twnia2/pkg-rocky8/tools/miniforge/Miniforge-pypy3-24.7.1-2/condabin:/opt/conda/bin:/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/u4526725/.local/bin:/home/u4526725/bin:/home/u4526725/.local/bin:/home/u4526725/.local/bin:/home/u4526725/bin:/home/u4526725/.local/bin

@@ -1,11 +1,9 @@
+/work/u4526725/ntuh/nnUNet
 /work/u4526725/Dataset/nnUNet/nnUNet_raw
 /work/u4526725/Dataset/nnUNet/nnUNet_preprocessed
 /work/u4526725/Dataset/nnUNet/nnUNet_results
 /work/u4526725/Dataset/nnUNet/nnUNet_predictions
-/home/u4526725/.conda/envs/nnUNet/bin:/opt/ohpc/Taiwania3/pkg/miniconda3/24.1.2/condabin:/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/thinlinc/bin:/home/u4526725/.local/bin:/home/u4526725/bin:/home/u4526725/.local/bin
-Fingerprint extraction...
-Dataset306_aicup2025
-Experiment planning...
+/home/u4526725/.conda/envs/nnUNet/bin:/opt/ohpc/Taiwania3/pkg/miniconda3/24.1.2/condabin:/opt/conda/bin:/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/thinlinc/bin:/home/u4526725/.local/bin:/home/u4526725/bin:/home/u4526725/.local/bin:/home/u4526725/bin:/home/u4526725/.local/bin
 Attempting to find 3d_lowres config. 
 Current spacing: [0.515      0.40636719 0.40636719]. 
 Current patch size: (np.int64(128), np.int64(256), np.int64(224)). 
@@ -65,6 +63,3 @@ Using <class 'nnunetv2.imageio.nibabel_reader_writer.NibabelIOWithReorient'> rea
 {'data_identifier': 'nnUNetPlans_3d_fullres', 'preprocessor_name': 'DefaultPreprocessor', 'batch_size': 2, 'patch_size': (np.int64(128), np.int64(256), np.int64(224)), 'median_image_size_in_voxels': array([302.5, 512. , 512. ]), 'spacing': array([0.5       , 0.39453125, 0.39453125]), 'normalization_schemes': ['CTNormalization'], 'use_mask_for_norm': [False], 'resampling_fn_data': 'resample_data_or_seg_to_shape', 'resampling_fn_seg': 'resample_data_or_seg_to_shape', 'resampling_fn_data_kwargs': {'is_seg': False, 'order': 3, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_seg_kwargs': {'is_seg': True, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'resampling_fn_probabilities': 'resample_data_or_seg_to_shape', 'resampling_fn_probabilities_kwargs': {'is_seg': False, 'order': 1, 'order_z': 0, 'force_separate_z': None}, 'architecture': {'network_class_name': 'dynamic_network_architectures.architectures.unet.ResidualEncoderUNet', 'arch_kwargs': {'n_stages': 6, 'features_per_stage': (32, 64, 128, 256, 320, 320), 'conv_op': 'torch.nn.modules.conv.Conv3d', 'kernel_sizes': ((3, 3, 3), (3, 3, 3), (3, 3, 3), (3, 3, 3), (3, 3, 3), (3, 3, 3)), 'strides': ((1, 1, 1), (2, 2, 2), (2, 2, 2), (2, 2, 2), (2, 2, 2), (2, 2, 2)), 'n_blocks_per_stage': (1, 3, 4, 6, 6, 6), 'n_conv_per_stage_decoder': (1, 1, 1, 1, 1), 'conv_bias': True, 'norm_op': 'torch.nn.modules.instancenorm.InstanceNorm3d', 'norm_op_kwargs': {'eps': 1e-05, 'affine': True}, 'dropout_op': None, 'dropout_op_kwargs': None, 'nonlin': 'torch.nn.LeakyReLU', 'nonlin_kwargs': {'inplace': True}}, '_kw_requires_import': ('conv_op', 'norm_op', 'dropout_op', 'nonlin')}, 'batch_dice': True}
 
 Plans were saved to /work/u4526725/Dataset/nnUNet/nnUNet_preprocessed/Dataset306_aicup2025/nnUNetResEncUNetLPlans.json
-Preprocessing...
-Preprocessing dataset Dataset306_aicup2025
-Configuration: 3d_lowres...
