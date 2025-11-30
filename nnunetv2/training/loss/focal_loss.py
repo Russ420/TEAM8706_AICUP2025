@@ -24,7 +24,7 @@ class FocalLoss(nn.Module):
         
         # Gather the probabilities for the correct classes
         # This is equivalent to indexing with target
-        target_expanded = target.unsqueeze(1)  # (B, 1, H, W, D)
+        target_expanded = target.unsqueeze(1).to(torch.int)  # (B, 1, H, W, D)
         pt = probs.gather(1, target_expanded).squeeze(1)  # (B, H, W, D)
         log_pt = log_probs.gather(1, target_expanded).squeeze(1)  # (B, H, W, D)
         

@@ -25,8 +25,11 @@ class DC_and_FC_loss(nn.Module):
         self.weight_ce = weight_ce
         self.ignore_label = ignore_label
 
-        self.ce = FocalLoss()
+        self.ce = FocalLoss(alpha=1., gamma=2)
         self.dc = dice_class(apply_nonlin=softmax_helper_dim1, **soft_dice_kwargs)
+
+        self.fc_value = None
+        self.dc_value = None
 
     def forward(self, net_output: torch.Tensor, target: torch.Tensor):
         """
@@ -53,6 +56,8 @@ class DC_and_FC_loss(nn.Module):
             if self.weight_ce != 0 and (self.ignore_label is None or num_fg > 0) else 0
 
         result = self.weight_ce * ce_loss + self.weight_dice * dc_loss
+        self.fc_value = ce_loss
+        self.dc_value = dc_loss
         return result
 
 
