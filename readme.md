@@ -1,58 +1,144 @@
 # Team 8706
-1. Installation Guides:
-First, create an environment with ```conda create -n nnUNet python=3.12```
-Then, activate the environment ```conda activate nnUNet``` and install pytorch with ```pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu126```.
-Lastly, type ```pip install nnunetv2``` to install all the dependency.
+## 1. Installation Guide:
+First, create an conda environment with:
 
-2. Dataset Preparation:
-Please create your own nnUNet dataset directory which contains subdirectory: ```nnUNet_raw```, ```nnUNet_preprocessed```, ```nnUNet_results```, and ```nnUNet_predictions```. 
-Please add those paths (```nnUNet_*```) into system variables. 
-We have provided a sample script to add them into ```$PATH``` which is located at ```./nnUNet/script/nchc/env.sh```
-Before creating dataset with ```bash ./nnUNet/script/nchc/twnia2/prepare_dataset.sh```, you should modify the ```base``` variable in python script located at ```./nnUNet/nnunetv2/dataset_conversion/Dataset306_aicup2025.py:10```. 
-Change it to ```/path/to/yourdataset```.
-Finally, you can ```bash ./nnUNet/script/nchc/twnia2/prepare_dataset.sh``` to generate the nnUNet-format dataset.
+```bash
+conda create -n nnUNet python=3.12
+```
+Then, activate the environment 
+  ```
+  conda activate nnUNet
+  pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu126
+  ``` 
+Lastly,  install nnunetv2 and all dependenices.
+```
+pip install nnunetv2
+```
 
-    My File Structure (Parallel):
-    ```
-    home/
-        Dataset/
-            aicup2025/ (original)
-                imagesTr/
-                imagesTs/
-                labelsTr/
-            nnUNet/
-                nnUNet_raw/
-                nnUNet_preprocessed/
-                nnUNet_results/
-                nnUNet_predictions/
-        nnUNet/ (codebase)
-    ```
+## 2. Dataset Preparation:
+### Step 1: Create Directory Structure
+Create your own nnUNet dataset directory with the following subdirectories: `nnUNet_raw`, `nnUNet_preprocessed`, `nnUNet_results`, and `nnUNet_predictions`.
+### Step 2: Set Environment Variables
 
-3. Plan and Preprocess (twnia3):
-* ```sbatch ./nnUNet/script/nchc/twnia3/plan_and_preprocess.sh```
+Add these paths (`nnUNet_*`) to your system environment variables. We have provided a sample script to add them to `$PATH`, located at:
+```
+./nnUNet/script/nchc/env.sh
+```
 
-    If you use local machine to preprocess your data. Please create a new file and directly use ```nnUNetv2_plan_and_process -d 306 -np 8 --verify_dataset_integerity```
+### Step 3: Configure Dataset Path
 
-4. Train (twnia2):
-* ```sbatch script/nchc/twnia2/train.sh``` (CE+Dice)
-* ```sbatch script/nchc/twnia2/train_fc.sh``` (Focal+Dice)
+Before creating the dataset with:
+```
+bash ./nnUNet/script/nchc/twnia2/prepare_dataset.sh
+```
 
-    If you use local machine to train your model, use ```nnUNetv2_train 306 3d_fullres 0```
+You should modify the `base` variable in the Python script located at:
+```
+./nnUNet/nnunetv2/dataset_conversion/Dataset306_aicup2025.py:10
+```
 
-5. Inference (twnia2):
-* ```sbatch script/nchc/twnia2/predict.sh (CE+Dice)```
-* ```sbatch script/nchc/twnia2/predict_fc.sh (Focal+Dice)```
+Change it to `/path/to/your/dataset`.
 
-    If you use local machine to train your model, use ```nnUNetv2_predict -i $DIR_INPUT -o $DIR_OUTPUT -d 306 -c 3d_fullres```, ```$DIR_INPUT``` is the imagesTs which is loacated at ```./Dataset/nnUNet/nnUNet_raw/imagesTs``` and ```DIR_OUTPUT``` is the directory to save the prediction results. In this project, we set it to ```./Dataset/nnUNet/nnUNet_predictions/Dataset306_aicup2025/nnUNetTrainer__nnUNetPlans__3d_fullres/```. Noted this directory needs to be manually created.
+### Step 4: Generate nnU-Net Format Dataset
 
-    The best result of our team needs to be esemble all the models trained on different folds.
-6. TroubleShooting: 
-   
-   You can reference the [original nnUNet document](https://github.com/MIC-DKFZ/nnUNet) but I think the above document is sufficient to reproduce the experiments.
+Finally, run the following command to generate the nnU-Net-format dataset:
+```
+bash ./nnUNet/script/nchc/twnia2/prepare_dataset.sh
+```
+
+### My File Structure (Parallel Directory Setup)
+```
+home/
+    Dataset/
+        aicup2025/ (original)
+            imagesTr/
+            imagesTs/
+            labelsTr/
+        nnUNet/
+            nnUNet_raw/
+            nnUNet_preprocessed/
+            nnUNet_results/
+            nnUNet_predictions/
+    nnUNet/ (codebase)
+```
+
+## 3. Plan and Preprocess (Taiwania 3)
+
+Submit the preprocessing job:
+```
+sbatch ./nnUNet/script/nchc/twnia3/plan_and_preprocess.sh
+```
+
+**For local machine:** If you use a local machine to preprocess your data, create a new file and directly run:
+```
+nnUNetv2_plan_and_preprocess -d 306 -np 8 --verify_dataset_integrity
+```
+
+## 4. Train (Taiwania 2)
+
+### Option 1: Cross-Entropy + Dice Loss
+```
+sbatch ./nnUNet/script/nchc/twnia2/train.sh
+```
+
+### Option 2: Focal + Dice Loss
+```bash
+sbatch ./nnUNet/script/nchc/twnia2/train_fc.sh
+```
+
+**For local machine:** If you use a local machine to train your model, run:
+```
+nnUNetv2_train 306 3d_fullres 0
+```
+## 5. Inference (Taiwania 2)
+
+### Option 1: Cross-Entropy + Dice Model
+```
+sbatch ./nnUNet/script/nchc/twnia2/predict.sh
+```
+
+### Option 2: Focal + Dice Model
+```
+sbatch ./nnUNet/script/nchc/twnia2/predict_fc.sh
+```
+
+**For local machine:** If you use a local machine for inference, run:
+```
+nnUNetv2_predict -i $DIR_INPUT -o $DIR_OUTPUT -d 306 -c 3d_fullres
+```
+
+Where:
+- `$DIR_INPUT` is the test images directory located at:
+```
+  ./Dataset/nnUNet/nnUNet_raw/imagesTs
+```
+- `$DIR_OUTPUT` is the directory to save prediction results. In this project, we set it to:
+```
+  ./Dataset/nnUNet/nnUNet_predictions/Dataset306_aicup2025/nnUNetTrainer__nnUNetPlans__3d_fullres/
+```
+
+**Note:** This output directory needs to be manually created before running inference.
+
+**Best Results:** Our best competition result was achieved by ensembling models trained on all different folds (5-fold cross-validation).
+
+## 6. Troubleshooting
+
+For additional help, you can reference the [original nnU-Net documentation](https://github.com/MIC-DKFZ/nnUNet). However, the documentation above should be sufficient to reproduce our experiments.
 
 # Acknowledgements
-This code is heavily based on nnUNet. If you find it useful, please cite the following paper. nnUNet is the best no doubt.
+
+This code is heavily based on nnU-Net. If you find it useful, please cite the following paper:
+```bibtex
+@article{isensee2021nnu,
+  title={nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation},
+  author={Isensee, Fabian and Jaeger, Paul F and Kohl, Simon AA and Petersen, Jens and Maier-Hein, Klaus H},
+  journal={Nature methods},
+  volume={18},
+  number={2},
+  pages={203--211},
+  year={2021},
+  publisher={Nature Publishing Group}
+}
 ```
-Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring 
-method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
-```
+
+**Credit:** nnU-Net is an outstanding framework for medical image segmentation, and we are grateful for the authors' contribution to the research community.
