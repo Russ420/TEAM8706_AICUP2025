@@ -14,18 +14,18 @@ Finally, you can ```bash ./nnUNet/script/nchc/twnia2/prepare_dataset.sh``` to ge
 
     My File Structure (Parallel):
     ```
-    .
-    ¢u¢w¢w Dataset
-    ¢x   ¢u¢w¢w aicup2025/ (original)
-    ¢x   ¢x   ¢u¢w¢w imagesTr/
-    ¢x   ¢x   ¢u¢w¢w imagesTs/
-    ¢x   ¢x   ¢|¢w¢w labelsTr/
-    ¢x   ¢|¢w¢w nnUNet/
-    ¢x       ¢u¢w¢w nnUNet_raw/
-    ¢x       ¢u¢w¢w nnUNet_preprocessed/
-    ¢x       ¢u¢w¢w nnUNet_results/
-    ¢x       ¢|¢w¢w nnUNet_predictions/
-    ¢|¢w¢w nnUNet/ (codebase)
+    home/
+        Dataset/
+            aicup2025/ (original)
+                imagesTr/
+                imagesTs/
+                labelsTr/
+            nnUNet/
+                nnUNet_raw/
+                nnUNet_preprocessed/
+                nnUNet_results/
+                nnUNet_predictions/
+        nnUNet/ (codebase)
     ```
 
 3. Plan and Preprocess (twnia3):
